@@ -6,7 +6,7 @@ nPercepts = 75  #This is the number of percepts
 nActions = 5    #This is the number of actions
 
 # Train against random for 5 generations, then against self for 1 generations
-trainingSchedule = [("random", 1000)]
+trainingSchedule = [("random", 250)]
 
 # This is the class for your creature/agent
 
@@ -238,7 +238,7 @@ def newGeneration(old_population):
             else:
                 survival_multiplier = 1
         # TODO fix the reporting fitness - difference: creature.final_fitness is being overwritten between games
-        creature.game_fitness = (pow((greedy + gladiator),  growth) * survival_multiplier) * tourist
+        creature.game_fitness = (greedy + gladiator) * growth * survival_multiplier
         creature.final_fitness[creature.game_num] = creature.game_fitness
         fitness[n] = creature.final_fitness[creature.game_num]
 
